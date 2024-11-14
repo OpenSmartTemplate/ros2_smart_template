@@ -18,44 +18,46 @@ This repository contains:
 ### Action server
 
 - The template node exposes the /stage/move action which takes a /smart_template_interfaces/action/MoveStage action message of the format:
-  
-* float64 x
-* float64 y
-* float64 z
-* float64 eps
-* ---
-* float64 x
-* float64 y
-* float64 z
-* float64 time
-* float64 error
-* int32 error_code
-* ---
-* float64 x
-* float64 y
-* float64 z
-* float64 error
-* float64 time
+```
+float64 x
+float64 y
+float64 z
+float64 eps
+---
+float64 x
+float64 y
+float64 z
+float64 time
+float64 error
+int32 error_code
+---
+float64 x
+float64 y
+float64 z
+float64 error
+float64 time
+```
 
 ### Service server
 
 - The template node exposes the /stage/command service which takes a /smart_template_interfaces/srv/ControllerCommand action message of the format:
-
-* string command
-* ---
-* string response
-
-  * command can be: 'HOME', or 'RETRACT' ('ABORT' still to be implemented)
+```
+string command
+---
+string response
+```
+where command can be: 'HOME', or 'RETRACT' ('ABORT' still to be implemented)
 
 - The template node exposes the /stage/get_position service which takes a /smart_template_interfaces/srv/GetPoint action message of the format:
+```
+---
+float64 x
+float64 y
+float64 z
+bool valid
+```
+where valid is False in case of communication error with Galil, and True otherwise
 
-* ---
-* float64 x
-* float64 y
-* float64 z
-* bool valid
-
- 
 ### Launch files
 - robot.launch.py
   * Argument: "sim_level"
