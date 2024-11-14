@@ -17,7 +17,7 @@ This repository contains:
 
 ### Action server
 
-- The template node exposes the /move_stage action which takes a /stage_control_interfaces/action/MoveStage action message of the format:
+- The template node exposes the /stage/move action which takes a /smart_template_interfaces/action/MoveStage action message of the format:
   
 * float64 x
 * float64 y
@@ -39,7 +39,7 @@ This repository contains:
 
 ### Service server
 
-- The template node exposes the /command service which takes a /stage_control_interfaces/srv/ControllerCommand action message of the format:
+- The template node exposes the /stage/command service which takes a /smart_template_interfaces/srv/ControllerCommand action message of the format:
 
 * string command
 * ---
@@ -47,6 +47,15 @@ This repository contains:
 
   * command can be: 'HOME', or 'RETRACT' ('ABORT' still to be implemented)
 
+- The template node exposes the /stage/get_position service which takes a /smart_template_interfaces/srv/GetPoint action message of the format:
+
+* ---
+* float64 x
+* float64 y
+* float64 z
+* bool valid
+
+ 
 ### Launch files
 - robot.launch.py
   * Argument: "sim_level"
